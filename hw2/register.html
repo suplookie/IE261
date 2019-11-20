@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+    <TITLE> table </TITLE>
+    <style>
+        .phone{
+            width: 40px;
+        }
+    </style>
+    <style>
+        .wide{
+            width: 250px;
+        }
+    </style>
+</HEAD>
+    <BODY bgcolor="black" text="#b8860b">
+        <TABLE BGCOLOR = "black" WIDTH = "600" CELLPADDING = "5" CELLSPACING = "1" ALIGN = "center" border="1">
+            <TR ALIGN = "center">
+                <TD COLSPAN = "2"><B> Basic Information </B></TD >
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">*Name &nbsp;</TD>
+                <TD><INPUT TYPE="text" MAXLENGTH="16" MINLENGTH="4" name="userName" required>&nbsp;&nbsp;<INPUT TYPE="button" VALUE="Check Duplication" required></TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">*Password &nbsp;</TD>
+                <TD><INPUT TYPE="password" MAXLENGTH="16" MINLENGTH="10" NAME="password" required>&nbsp;(Minimun 10, Maximum 16)</TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">*Password Check&nbsp;</TD>
+                <TD><INPUT TYPE="password" MAXLENGTH="16" MINLENGTH="10" NAME="pwCheck" required></TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">*Email &nbsp;</TD>
+                <TD><INPUT TYPE="email" NAME="email" WIDTH="20" class="wide" REQUIRED></TD>
+            </TR>
+            <TR ALIGN = "center">
+                <TD COLSPAN = "2"><B> Private Information </B></TD >
+            </TR>
+            <TR BGCOLOR="white">
+                <TD align="right" rowspan="2">Address&nbsp;</TD>
+                <TD><input type="text" name="address">&nbsp;<input type="button" value="Post Number Search"></TD>
+            </TR>
+            <TR bgcolor="white">
+                <TD><input type="text" class="wide"></TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">Phone Number &nbsp;</TD>
+                <TD><input type="number" name="phone" minlength="3" maxlength="3" class="phone">&nbsp;-&nbsp;<input type="number" name="phone" minlength="3" maxlength="4" class="phone">&nbsp;-&nbsp;<input type="number" name="phone" minlength="4" maxlength="4" class="phone"></TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">Zodiac &nbsp;</TD>
+                <TD><SELECT>
+                    <OPTION VALUE="selected">Select Zodiac</OPTION>
+                    <OPTION VALUE="1">Aries</OPTION>
+                    <option value="2">Taurus</option>
+                    <option value="3">Gemini</option>
+                    <option value="4">Cancer</option>
+                    <option value="5">Leo</option>
+                    <option value="6">Virgo</option>
+                    <option value="7">Libra</option>
+                    <option value="8">Scorpio</option>
+                    <option value="9">Sagittarius</option>
+                    <option value="10">Capricorn</option>
+                    <option value="11">Aquarius</option>
+                    <option value="12">Pisces</option>
+                </SELECT></TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">Rank&nbsp;</TD>
+                <TD><input type="radio" value="1" name="rank">God&nbsp;<input type="radio" value="1" name="rank">Demon&nbsp;<input type="radio" value="1" name="rank">Angel&nbsp;<input type="radio" value="1" name="rank">Archangel&nbsp;<input type="radio" value="1" name="rank">Etc</TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">CheckBox &nbsp;</TD>
+                <TD><input type="checkbox" name="checkbox">1&nbsp;<input type="checkbox" name="checkbox">2&nbsp;<input type="checkbox" name="checkbox">3&nbsp;</TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">Profile &nbsp;</TD>
+                <TD><textarea name="text" rows="2" cols="60"></textarea> </TD>
+            </TR>
+            <TR BGCOLOR = "white">
+                <TD align="right">Photo &nbsp;</TD>
+                <TD><input type="text">&nbsp;<input type="file" name="photo"></TD>
+            </TR>
+            <tr align="center">
+                <td colspan="2">
+
+                    <INPUT TYPE="submit" NAME="register" VALUE="Register">
+                    &nbsp;&nbsp;
+                    <INPUT TYPE="reset" NAME="cancel" VALUE="Cancel">
+                </td>
+            </tr>
+        </TABLE>
+    </BODY>
+</HTML>

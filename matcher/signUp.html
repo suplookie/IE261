@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+    <TITLE>Register</TITLE>
+</HEAD>
+<BODY>
+<FORM METHOD="post" ACTION="moreInfo.php">
+    <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1">
+        <TR>
+            <TD>Student Number</TD>
+            <TD><INPUT type="number" name="StudNum"  required>
+        </TR>
+        <TR>
+            <TD>Name</TD>
+            <TD><INPUT type="text" name="name" required></TD>
+        </TR>
+        <TR>
+            <TD>Password</TD>
+            <TD><INPUT type="password" name="password" required></TD>
+        </TR>
+        <TR>
+            <TD>Department</TD>
+            <TD><select name="department"required>
+                <option value="">Department</option>
+                <option value="PH">Physics</option>
+                <option value="MAS">Mathematics</option>
+                <option value="CH">Chemistry</option>
+                <option value="BS">Biology</option>
+                <option value="CS">Computer Science</option>
+                <option value="EE">Electronic Engineering</option>
+                <option value="CE">Civil & Environment Engineering</option>
+                <option value="BiS">Bio & Brain Engineering</option>
+                <option value="ID">Industrial Design</option>
+                <option value="IE">Industrial & System Engineering</option>
+                <option value="CBE">Chemical & Biomolecular Engineering</option>
+                <option value="NQE">Nuclear & Quantum Engineering</option>
+                <option value="MS">Material Science And Engineering</option>
+                <option value="ME">Mechanical Engineering</option>
+                <option value="AE">Aerospace Engineering</option>
+                <option value="MSB">Business</option>
+                <option value="Ot">Other</option>
+            </select> </TD>
+        </TR>
+        <TR>
+            <TD>Tutor/Tutee</TD>
+            <TD><input type="checkbox" name="tutor">Tutor&nbsp;<input type="checkbox" name="tutee">Tutee</TD>
+        </TR>
+        <TR>
+            <TD>Email</TD>
+            <TD><INPUT type="email" name="email" required></TD>
+        </TR>
+    </TABLE>
+    <p><INPUT type="submit" value="Sign Up">
+        <INPUT type="reset" value="Clear">
+    </p>
+</FORM>
+</BODY>
+</HTML>

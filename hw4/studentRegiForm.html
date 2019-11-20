@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+    <H2>Student Registration Form</H2>
+</HEAD>
+<BODY>
+<FORM METHOD="post" ACTION="studentRegiResult.php">
+    <TABLE border="1" width="350" cellpadding="5">
+        <TR><TD>1. name</TD><TD><INPUT type="text" name="s_name" maxlength="20" size="20"></TD></TR>
+        <TR><TD>2. address</TD><TD><INPUT type="text" name="s_address" maxlength="20" size="20"></TD></TR>
+        <TR><TD>3. phone</TD><TD><INPUT type="text" name="s_phone" maxlength="20" size="20"></TD></TR>
+        <TR><TD>4. department</TD><TD>
+            <SELECT name="department">
+                <OPTION value="IE">IE</OPTION>
+                <OPTION value="ME">ME</OPTION>
+                <OPTION value="CS">CS</OPTION>
+            </SELECT>
+        </TD></TR>
+    </TABLE>
+    <p><INPUT type="submit" value="submit">
+    <INPUT type="reset" value="cancel"></p>
+</FORM>
+</BODY>
+</HTML>

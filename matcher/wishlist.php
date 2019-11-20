@@ -19,6 +19,7 @@ function openwin() {
 </script>";
 echo "<FORM METHOD=\"post\" ACTION=\"delete.php\" target='popwin'>";
 
+echo "<h4>My Wishlist</h4>";
 
 $selection = "select * from match.wishlist";
 $result = $conn -> query($selection);

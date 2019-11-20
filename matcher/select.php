@@ -17,6 +17,7 @@ echo "<FORM METHOD=\"post\" ACTION=\"match.php\">";
 $selection = "select * from match.open_class";
 //모든 오픈클래스가 아닌, tutoring match에 없는 클래스만 가져오는거로 바꾸기
 $result = $conn -> query($selection);
+echo "<h4>Select class you want. If not, add to your wishlist</h4>";
 if ($result -> num_rows > 0) {
     echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
     echo "<TR><TD></TD></TD><TD>Course</TD><TD>Professor</TD><TD>TutorNum</TD><TD>Tutor Name</TD><TD>Tutor Department</TD><TD>Price</TD></TR>";

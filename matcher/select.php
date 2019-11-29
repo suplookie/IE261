@@ -14,7 +14,8 @@ if ($conn-> connect_error) {
 
 echo "<FORM METHOD=\"post\" ACTION=\"match.php\">";
 
-$selection = "select * from match.open_class";
+$selection = "select * from match.open_class where idopen_class not in 
+                    (select classId from match.tutoring_match)";
 //모든 오픈클래스가 아닌, tutoring match에 없는 클래스만 가져오는거로 바꾸기
 $result = $conn -> query($selection);
 echo "<h4>Select class you want. If not, add to your wishlist</h4>";

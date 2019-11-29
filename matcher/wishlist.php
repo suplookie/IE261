@@ -11,12 +11,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
-echo "<script>
+/*echo "<script>
 function openwin() {
     window.open('about:blank','popwin','width=250,height=100');
     f1.submit();
-}
-</script>";
+
+</script>";}*/
 echo "<FORM METHOD=\"post\" ACTION=\"delete.php\" target='popwin'>";
 
 echo "<h4>My Wishlist</h4>";
@@ -38,8 +38,8 @@ if ($result -> num_rows > 0) {
 else {
     echo "<h1>Warning: NO TRADE HISTORY IN THE PERIOD</h1>";
 }
-echo "<p><INPUT type=\"submit\" value=\"delete\" onclick='openwin()'>&nbsp;";
-echo "<button type=\"button\" onclick=\"location.href ='http://localhost:8080/matcher/mywish.php' \"> Add wishlist </button></p>";
+echo "<INPUT type=\"submit\" value=\"delete\" >&nbsp;";
+echo "<button type='button' onclick=\"location.href ='http://localhost:8080/matcher/mywish.php' \"> Add wishlist </button>";
 echo "</FORM>";
 
 $conn -> close();

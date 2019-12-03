@@ -37,6 +37,8 @@
         #please{
             text-align: center;
             margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -63,7 +65,7 @@ if ($conn-> connect_error) {
 // 로그인 이후에 들어올 수 있도록 추가
 
 if (!isset($_SESSION['studNum'])){
-    echo "<div id='please' align='center'><h3>Please Sign In</h3></div>";
+    echo "<div id='please' align='center'>Please Sign In</div>";
     echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button></p>";
 }
 else {
@@ -112,7 +114,7 @@ else {
         echo "<p align='center'><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
         echo "</FORM>";
     } else
-        echo "<div id='please' align='center'><h3>Only tutor can select class</h3></div>";
+        echo "<div id='please' align='center'>Only tutor can select class</div>";
 }
 $conn -> close();
 ?>

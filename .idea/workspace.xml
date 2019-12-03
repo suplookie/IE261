@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2222f1f4-527e-448c-a89b-31e5cf75604b" name="Default Changelist" comment="" />
+    <list default="true" id="2222f1f4-527e-448c-a89b-31e5cf75604b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/Untitled.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/Untitled.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/Untitled.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/Untitled.mwb.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/left.html" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/left.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/moreInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/moreInfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/select.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/signIn.html" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/signIn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/signUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/wishlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/wishlist.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +23,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -97,10 +111,27 @@
       <workItem from="1573105713065" duration="484000" />
       <workItem from="1573709514891" duration="3166000" />
       <workItem from="1574091017252" duration="32197000" />
+      <workItem from="1575206160754" duration="1779000" />
+      <workItem from="1575210150869" duration="2789000" />
+      <workItem from="1575293602127" duration="1989000" />
+      <workItem from="1575351741516" duration="3210000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

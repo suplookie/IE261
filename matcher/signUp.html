@@ -1,10 +1,29 @@
 <HTML>
 <HEAD>
     <TITLE>Register</TITLE>
+    <style>
+        input[type=submit], input[type=reset]{
+            width: 90px;
+            height: 25px;
+            margin: 5px;
+            left: 8px;
+            position: relative;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            color:black;
+        }
+        input[type=submit]:hover, input[type=reset]:hover{
+            color:white;
+            background-color: black;
+        }
+
+    </style>
+
 </HEAD>
 <BODY>
 <FORM METHOD="post" ACTION="moreInfo.php">
-    <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1">
+    <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1" align="center">
         <TR>
             <TD>Student Number</TD>
             <TD><INPUT type="number" name="StudNum"  required>
@@ -42,14 +61,14 @@
         </TR>
         <TR>
             <TD>Tutor/Tutee</TD>
-            <TD><input type="checkbox" name="tutor">Tutor&nbsp;<input type="checkbox" name="tutee">Tutee</TD>
+            <TD><input type="radio" name="tt" value="tutor" required>Tutor&nbsp;<input type="radio" name="tt" value="tutee">Tutee</TD>
         </TR>
         <TR>
             <TD>Email</TD>
             <TD><INPUT type="email" name="email" required></TD>
         </TR>
     </TABLE>
-    <p><INPUT type="submit" value="Sign Up">
+    <p align="center"><INPUT type="submit" value="Sign Up">
         <INPUT type="reset" value="Clear">
     </p>
 </FORM>

@@ -1,6 +1,27 @@
+<html>
+<head>
+    <style>
+        button, input[type=submit], input[type=reset]{
+            width: 90px;
+            height: 25px;
+            margin: 5px;
+            left: 8px;
+            position: relative;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            color:black;
+        }
+        button:hover, input[type=submit]:hover, input[type=reset]:hover{
+            color:white;
+            background-color: black;
+        }
+    </style>
+</head>
 <?php
 
-$servername = "localhost";
+//$servername = "110.76.66.224";
+$servername = "143.248.171.170";
 $username = "test";
 $password = "1234";
 $dbname = "match";
@@ -49,3 +70,5 @@ echo "</FORM>";
 $conn -> close();
 
 ?>
+
+</html>

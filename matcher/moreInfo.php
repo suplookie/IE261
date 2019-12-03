@@ -16,6 +16,19 @@
             color:white;
             background-color: black;
         }
+        table{
+            alignment: center;
+            font-size: 20px;
+            margin-top: 1em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+        }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
 <?php
@@ -45,19 +58,19 @@
             echo "Student ID is already registered. ";
         else {
             $kaist = "insert into match.kaist_stu (stu_num, name, department, email, password) values (". $_POST["StudNum"]. ", '". $_POST["name"]. "', '". $_POST["department"]. "', '". $_POST["email"]. "', '". $_POST["password"]. "');";
-            echo $kaist;
+            $turtee = 1;
             $conn->query($kaist);
             if ($_POST["tt"] == "tutor") {
-                echo "tutor";
+                $turtee = 1;
                 $conn->query("insert into match.tutor (stuNum, avgrade) values (". $_POST["StudNum"]. ", '0');");
             }
             else{
-                echo "tutee";
+                $turtee = 2;
                 $conn->query("insert into match.tutee (stunum) values (". $_POST["StudNum"]. ");");
             }
             $_SESSION['studNum'] = $_POST["StudNum"];
             $_SESSION['password'] = $_POST['password'];
-            echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\" border='1'>";
+            echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
             echo "<TR><TD align='right'>Name &nbsp;</TD><TD><input type='text' name='name' value=". $_POST["name"]. "></TD>";
             echo "<TR><TD align='right'>Password &nbsp;</TD><TD><input type='password' name='password'></TD></TR>";
             echo "<TR><TD align='right'>Student Number &nbsp;</TD><TD>". $_POST["StudNum"]. "</TD>";
@@ -92,23 +105,16 @@
             echo "</TABLE>";
             echo "</FORM>";
         }
-
     }
 
-    else if (isset($_POST["StudNum"]) || isset($_SESSION['studNum'])) { //from sign in
-        /*if (isset($_POST["course"])&& isset($_POST["prof"]) && isset($_POST["grade"])) {        //update tutor grade
-            $qu = "select * from match.kaistcourses where course='". $_POST["course"]. "' and prof= '". $_POST["prof"]. "'";
-            $courseCon = $conn->query($qu);
-            $course=$courseCon->fetch_assoc();
-            $query = "insert into match.tutorgrade (stunum, grade, courseId) values (". $_POST["StudNum"]. ", '". $_POST["grade"]. "', ". $course["idkaistCourses"]. ")";
-            $conn->query($query);
-        }*/
+    else if (isset($_POST["StudNum"]) || isset($_SESSION['studNum'])) { //from sign in + mypage
 
         if (isset($_SESSION['studNum'])) {
             $selection = "select * from match.kaist_stu where stu_num = ". $_SESSION["studNum"]. " and password = ".$_SESSION["password"];
         }
         else
             $selection = "select * from match.kaist_stu where stu_num = ". $_POST["StudNum"]. " and password = ".$_POST["password"];
+
         $result = $conn -> query($selection);
         if ($result -> num_rows > 0) {
             if (!isset($_SESSION['studNum'])) {
@@ -117,7 +123,7 @@
             }
             $now = $result -> fetch_assoc();
             echo "<input type='hidden' name='StudNum' value=". $now["stu_num"]. ">";
-            echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\" border='1'>";
+            echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
             echo "<TR><TD align='right'>Name &nbsp;</TD><TD><input type='text' name='Name' value=". $now["name"]. "></TD></TR>";
             echo "<TR><TD align='right'>Password &nbsp;</TD><TD><input type='password' name='password' required></TD></TR>";
             echo "<TR><TD align='right'>Student Number &nbsp;</TD><TD>". $now["stu_num"]. "</TD></TR>";
@@ -153,18 +159,43 @@
             echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p></TD></TR>";
             echo "</TABLE>";
             echo "</FORM>";
-/*
-            if ($tutorRes -> num_rows > 0) {        //if tutor, show my grade I uploaded
-                $getGrade = $conn -> query("select * from match.tutorgrade where stunum=". $_POST["StudNum"]);
-                echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\">";
-                echo "<TR><TD align='center'>Course</TD><TD align='center'>Professor</TD><TD align='center'>Grade</TD></TR>";
-                while ($grade = $getGrade->fetch_assoc()){
-                    $courseCon = $conn -> query("select * from match.kaistcourses where idkaistCourses=". $grade["courseId"]);
-                    $course = $courseCon->fetch_assoc();
-                    echo "<TR><TD align='center'>". $course["course"]. "</TD><TD align='center'>". $course["prof"]. "</TD><TD align='center'>". $grade["grade"]. "</TD></TR>";
+
+            $tutorOrtutee = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum'].";");
+
+            if($tutorOrtutee->num_rows > 0){ // 튜터일 때
+                $tutorMatch = $conn->query("select * from match.tutoring_match where classId in (select idopen_class from match.open_class where tutorNum = " . $_SESSION['studNum'].");");
+                if($tutorMatch->num_rows > 0) {
+                    echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
+                    echo "<TR><TD>Tutee &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD></TR>";
+                    while ($row = $tutorMatch->fetch_array()) {
+                        $classid = $row['classId'];
+                        $dataOpenClass = $conn->query("select * from match.open_class where idopen_class = " . $row['classId']);
+                        $openrow = $dataOpenClass->fetch_array();
+                        $dataKaistCourse = $conn->query("select * from match.kaistcourses where idkaistCourses = " . $openrow['courseId']);
+                        $courserow = $dataKaistCourse->fetch_array();
+                        echo "<TR><TD>".$row['tuteeNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD></TR>";
+                    }
+                    echo "</TABLE>";
                 }
-                echo "</TABLE>";
-            }*/
+            }
+            else {
+                $tuteeMatch = $conn->query("select * from match.tutoring_match where tuteeNum = " . $_SESSION['studNum'].";");
+                if($tuteeMatch->num_rows > 0) {
+                    echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
+                    echo "<TR><TD>Tutor &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD></TR>";
+                    while ($row = $tuteeMatch->fetch_array()) {
+                        $classid = $row['classId'];
+                        $dataOpenClass = $conn->query("select * from match.open_class where idopen_class = " . $row['classId']);
+                        $openrow = $dataOpenClass->fetch_array();
+                        $dataKaistCourse = $conn->query("select * from match.kaistcourses where idkaistCourses = " . $openrow['courseId']);
+                        $courserow = $dataKaistCourse->fetch_array();
+                        echo "<TR><TD>".$openrow['tutorNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD></TR>";
+                    }
+                    echo "</TABLE>";
+                }
+            }
+
+
         }
         else {          //login fail
             echo "Student ID or password is wrong. <br></FORM>";

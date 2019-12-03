@@ -21,7 +21,7 @@
 <?php
 
 //$servername = "110.76.66.224";
-$servername = "localhost";
+$servername = "143.248.219.83";
 $username = "test";
 $password = "1234";
 $dbname = "match";
@@ -60,7 +60,7 @@ else {
     echo "<h1>Warning: NO TRADE HISTORY IN THE PERIOD</h1>";
 }
 echo "<INPUT type=\"submit\" value=\"delete\" >&nbsp;";
-echo "<button type='button' onclick=\"location.href ='http://localhost:8080/matcher/mywish.php' \"> Add wishlist </button>";
+echo "<button type='button' onclick=\"location.href ='mywish.php' \"> Add wishlist </button>";
 echo "</FORM>";
 
 $conn -> close();

@@ -25,7 +25,7 @@
     //로그인했을때 첫화면이기도 하기때문에 signin시 입력한 정보(학번 이름 이메일)이용해 정보 가져오기
     //signup시에도 연결되므로 그때 정보를 데이터베이스에 넣고 내정보 보여주기
     //$servername = "110.76.66.224";
-    $servername = "localhost";
+    $servername = "143.248.219.83";
     $username = "test";
     $password = "1234";
     $dbname = "match";
@@ -77,7 +77,6 @@
     }
 
     else if (isset($_POST["StudNum"]) || isset($_SESSION['studNum'])) { //from sign in
-        echo "ASdf";
         if (isset($_POST["course"])&& isset($_POST["prof"]) && isset($_POST["grade"])) {        //update tutor grade
             $qu = "select * from match.kaistcourses where course='". $_POST["course"]. "' and prof= '". $_POST["prof"]. "'";
             $courseCon = $conn->query($qu);
@@ -152,7 +151,6 @@
             echo "<button type='button' onclick=\"location.href = 'http://localhost:8080/matcher/main.html'\">Back</button>";
         }
     }
-    if (isset($_SESSION['studNum'])) echo "asas";
     else {  //from mypage not logged in
         echo "Please log in<br>";
     }

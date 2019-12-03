@@ -21,7 +21,7 @@
 <?php
 
 //$servername = "110.76.66.224";
-$servername = "localhost";
+$servername = "143.248.219.83";
 $username = "test";
 $password = "1234";
 $dbname = "match";

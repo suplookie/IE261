@@ -16,6 +16,10 @@
             color:white;
             background-color: black;
         }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+        }
     </style>
 </head>
 <?php
@@ -34,8 +38,8 @@ if ($conn-> connect_error) {
 }
 
 if (!isset($_SESSION['studNum'])){
-    echo "<h3>Please Sign In</h3>";
-    echo "<button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button>";
+    echo "<div id='please' align='center'><h3>Please Sign In</h3></div>";
+    echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button></p>";
 }
 else {
     $tuteeCheck = $conn -> query("select * from match.tutee where stunum = ". $_SESSION['studNum']);

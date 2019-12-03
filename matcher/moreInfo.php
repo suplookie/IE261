@@ -168,7 +168,7 @@
         }
         else {          //login fail
             echo "Student ID or password is wrong. <br></FORM>";
-            echo "<button type='button' onclick=\"location.href = 'http://localhost:8080/matcher/main.html'\">Back</button>";
+            echo "<button type='button' onclick=\"location.href = 'main.html'\">Back</button>";
         }
     }
     else {  //from mypage not logged in

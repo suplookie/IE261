@@ -69,7 +69,7 @@ else {
             echo "<h1>Warning: NO CLASS OPENED</h1>";
         }
         echo "<p><INPUT type=\"submit\" value=\"Submit\"> &nbsp;";
-        echo "<button type=\"button\" onclick=\"location.href ='http://localhost:8080/matcher/mywish.php' \"> Add wishlist </button></p>";
+        echo "<button type=\"button\" onclick=\"location.href ='mywish.php' \"> Add wishlist </button></p>";
         echo "</FORM>";
     }
     else

@@ -40,13 +40,20 @@ if ($conn-> connect_error) {
 // tutor만 들어올 수 있도록 추가
 // 로그인 이후에 들어올 수 있도록 추가
 
+
+
 if (!isset($_SESSION['studNum']))
     echo "<h4>please Sign In</h4>";
 else {
     $tutorCheck = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum']);
     if ($tutorCheck->num_rows > 0) {
 
-        echo "<FORM METHOD=\"post\" ACTION=\"registerLecture.php\">";
+        echo "<FORM METHOD=\"post\" ACTION=\"registerLecture.php\" name='form'>";
+
+        if (isset($_POST["open"])) {   //from registerLecture itself (after clicking submit button)
+            $openclass = "insert into match.open_class (tutorNum, price, courseId) values (".$_SESSION["studNum"].",". $_POST["price"]. ",". $_POST["courses"].");";
+            $conn->query($openclass);
+        }
 
         $qu = "select * from match.kaistcourses";
         $courseCon = $conn->query($qu);
@@ -57,23 +64,23 @@ else {
             echo "<option value=" . $row['idkaistCourses'] . ">" . $row['course'] . " by " . $row['prof'] . "</option>";
         }
         echo "</select></TD></TR>";
-        echo "<TR><TD align='right'>Grade &nbsp;</TD><TD><select name='grade' required>
-                <option value=\"4.3\">4.3</option>
-                <option value=\"4.0\">4.0</option>
-                <option value=\"3.7\">3.7</option>
-                <option value=\"3.3\">3.3</option>
-                <option value=\"3.0\">3.0</option>
-                <option value=\"2.7\">2.7</option>
-                <option value=\"2.3\">2.3</option>
-                <option value=\"2.0\">2.0</option>
-                <option value=\"1.7\">1.7</option>
-                <option value=\"1.3\">1.3</option>
-                <option value=\"1.0\">1.0</option>
-                <option value=\"0.7\">0.7</option>
-                <option value=\"0.0\">0.0</option>
+        echo "<TR><TD align='right'>Grade! &nbsp;</TD><TD><select name='grade' required>
+                <option value=\"4.3\">A+</option>
+                <option value=\"4.0\">A0</option>
+                <option value=\"3.7\">A-</option>
+                <option value=\"3.3\">B+</option>
+                <option value=\"3.0\">B0</option>
+                <option value=\"2.7\">B-</option>
+                <option value=\"2.3\">C+</option>
+                <option value=\"2.0\">C0</option>
+                <option value=\"1.7\">C-</option>
+                <option value=\"1.3\">D+</option>
+                <option value=\"1.0\">D0</option>
+                <option value=\"0.7\">D-</option>
+                <option value=\"0.0\">F</option>
                 </select></TD></TR>";
-        echo "<TR><TD align='right'>Price &nbsp;</TD><TD><input type='number' required min='0' maxlength='6'></TD></TR>";
-        echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"OPEN\">&nbsp;<INPUT type=\"reset\" value='Clear'></p></TD></TR>";
+        echo "<TR><TD align='right'>Price &nbsp;</TD><TD><input type='number' name='price' required min='0' maxlength='6'></TD></TR>";
+        echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p></TD></TR>";
         echo "</TABLE>";
         echo "</FORM>";
     } else
@@ -81,4 +88,5 @@ else {
 }
 $conn -> close();
 ?>
+
 </html>

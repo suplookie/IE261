@@ -2,19 +2,27 @@
 <head>
     <style>
         button, input[type=submit], input[type=reset]{
-            width: 90px;
-            height: 25px;
-            margin: 5px;
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            margin: 30px;
             left: 8px;
             position: relative;
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 5px;
             color:black;
+            font-weight: bold;
         }
         button:hover, input[type=submit]:hover, input[type=reset]:hover{
             color:white;
             background-color: black;
+        }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -34,8 +42,8 @@ if ($conn-> connect_error) {
 }
 
 if (!isset($_SESSION['studNum'])){
-    echo "<h3>Please Sign In</h3>";
-    echo "<button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button>";
+    echo "<div id='please' align='center'>Please Sign In</div>";
+    echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button></p>";
 }
 else {
     $tuteeCheck = $conn -> query("select * from match.tutee where stunum = ". $_SESSION['studNum']);
@@ -46,7 +54,7 @@ else {
                         (select classId from match.tutoring_match)";
         //모든 오픈클래스가 아닌, tutoring match에 없는 클래스만 가져오는거로 바꾸기
         $result = $conn -> query($selection);
-        echo "<h4>Select class you want. If not, add to your wishlist</h4>";
+        echo "<div id='please' align='center'>Select class you want. If not, add to your wishlist</div>";
         if ($result -> num_rows > 0) {
             echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
             echo "<TR><TD></TD></TD><TD>Course</TD><TD>Professor</TD><TD>TutorNum</TD><TD>Tutor Name</TD><TD>Tutor Department</TD><TD>Price</TD></TR>";
@@ -69,14 +77,14 @@ else {
             echo "</TABLE>";
         }
         else {
-            echo "<h1>Warning: NO CLASS OPENED</h1>";
+            echo "<div id='please' align='center'>Warning: NO CLASS OPENED</div>";
         }
         echo "<p><INPUT type=\"submit\" value=\"Submit\"> &nbsp;";
         echo "<button type=\"button\" onclick=\"location.href ='mywish.php' \"> Add wishlist </button></p>";
         echo "</FORM>";
     }
     else
-        echo "Only tutee can select class";
+        echo "<div id='please' align='center'>Only tutee can select class</div>";
 
 }
 $conn -> close();

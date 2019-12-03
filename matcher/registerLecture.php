@@ -34,6 +34,10 @@
         select, input[type=number]{
             font-size: 20px;
         }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+        }
     </style>
 </head>
 <?php
@@ -59,8 +63,8 @@ if ($conn-> connect_error) {
 // 로그인 이후에 들어올 수 있도록 추가
 
 if (!isset($_SESSION['studNum'])){
-    echo "<h4>please Sign In</h4>";
-    echo "<button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button>";
+    echo "<div id='please' align='center'><h3>Please Sign In</h3></div>";
+    echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button></p>";
 }
 else {
     $tutorCheck = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum']);
@@ -108,7 +112,7 @@ else {
         echo "<p align='center'><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
         echo "</FORM>";
     } else
-        echo "Only tutor can select class";
+        echo "<div id='please' align='center'><h3>Only tutor can select class</h3></div>";
 }
 $conn -> close();
 ?>

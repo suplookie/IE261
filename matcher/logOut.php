@@ -36,6 +36,6 @@ if (!isset($_SESSION["studNum"])) {
 }
 else {
     session_destroy();
-    echo "<p><h4>Log Out Successed</h4></p>";
+    echo "<div id='please' align='center'><h4>Log Out Successed</h4></div>";
 }
 ?>

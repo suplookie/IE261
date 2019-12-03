@@ -73,14 +73,14 @@ else {
             echo "</TABLE>";
         }
         else {
-            echo "<h1>Warning: NO CLASS OPENED</h1>";
+            echo "<div id='please' align='center'><h1>Warning: NO CLASS OPENED</h1></div>";
         }
         echo "<p><INPUT type=\"submit\" value=\"Submit\"> &nbsp;";
         echo "<button type=\"button\" onclick=\"location.href ='mywish.php' \"> Add wishlist </button></p>";
         echo "</FORM>";
     }
     else
-        echo "Only tutee can select class";
+        echo "<div id='please' align='center'><h3>Only tutee can select class</h3></div>";
 
 }
 $conn -> close();

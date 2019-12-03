@@ -1,20 +1,38 @@
 <html>
 <head>
     <style>
+        table{
+            alignment: center;
+            font-size: 20px;
+            margin-top: 5em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+        }
+        td{
+            text-align: center;
+        }
         button, input[type=submit], input[type=reset]{
-            width: 90px;
-            height: 25px;
-            margin: 5px;
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            margin: 30px;
             left: 8px;
             position: relative;
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 5px;
             color:black;
+            font-weight: bold;
         }
         button:hover, input[type=submit]:hover, input[type=reset]:hover{
             color:white;
             background-color: black;
+        }
+        select, input[type=number]{
+            font-size: 20px;
         }
     </style>
 </head>
@@ -40,8 +58,6 @@ if ($conn-> connect_error) {
 // tutor만 들어올 수 있도록 추가
 // 로그인 이후에 들어올 수 있도록 추가
 
-
-
 if (!isset($_SESSION['studNum']))
     echo "<h4>please Sign In</h4>";
 else {
@@ -58,13 +74,13 @@ else {
         $qu = "select * from match.kaistcourses";
         $courseCon = $conn->query($qu);
 
-        echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\" border='1'>";
+        echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
         echo "<TR><TD align='right'>Courses&nbsp;</TD><TD><select name=\"courses\" required>";
         while ($row = $courseCon->fetch_array()) {
             echo "<option value=" . $row['idkaistCourses'] . ">" . $row['course'] . " by " . $row['prof'] . "</option>";
         }
         echo "</select></TD></TR>";
-        echo "<TR><TD align='right'>Grade! &nbsp;</TD><TD><select name='grade' required>
+        echo "<TR><TD align='right'>Grade &nbsp;</TD><TD><select name='grade' required>
                 <option value=\"4.3\">A+</option>
                 <option value=\"4.0\">A0</option>
                 <option value=\"3.7\">A-</option>
@@ -80,8 +96,8 @@ else {
                 <option value=\"0.0\">F</option>
                 </select></TD></TR>";
         echo "<TR><TD align='right'>Price &nbsp;</TD><TD><input type='number' name='price' required min='0' maxlength='6'></TD></TR>";
-        echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p></TD></TR>";
         echo "</TABLE>";
+        echo "<p align='center'><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
         echo "</FORM>";
     } else
         echo "Only tutor can select class";

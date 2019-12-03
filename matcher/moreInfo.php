@@ -166,14 +166,14 @@
                 $tutorMatch = $conn->query("select * from match.tutoring_match where classId in (select idopen_class from match.open_class where tutorNum = " . $_SESSION['studNum'].");");
                 if($tutorMatch->num_rows > 0) {
                     echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
-                    echo "<TR><TD>Tutee &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD></TR>";
+                    echo "<TR><TD>Tutee &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD><TD>Semester &nbsp;</TD></TR>";
                     while ($row = $tutorMatch->fetch_array()) {
                         $classid = $row['classId'];
                         $dataOpenClass = $conn->query("select * from match.open_class where idopen_class = " . $row['classId']);
                         $openrow = $dataOpenClass->fetch_array();
                         $dataKaistCourse = $conn->query("select * from match.kaistcourses where idkaistCourses = " . $openrow['courseId']);
                         $courserow = $dataKaistCourse->fetch_array();
-                        echo "<TR><TD>".$row['tuteeNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD></TR>";
+                        echo "<TR><TD>".$row['tuteeNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD><TD>".$row['semester']."</TD></TR>";
                     }
                     echo "</TABLE>";
                 }
@@ -182,14 +182,15 @@
                 $tuteeMatch = $conn->query("select * from match.tutoring_match where tuteeNum = " . $_SESSION['studNum'].";");
                 if($tuteeMatch->num_rows > 0) {
                     echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
-                    echo "<TR><TD>Tutor &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD></TR>";
+                    echo "<TR><TD>Tutor &nbsp;</TD><TD>Price &nbsp;</TD><TD>Course &nbsp;</TD><TD>Professor &nbsp;</TD><TD>Semester &nbsp;</TD></TR>";
                     while ($row = $tuteeMatch->fetch_array()) {
                         $classid = $row['classId'];
                         $dataOpenClass = $conn->query("select * from match.open_class where idopen_class = " . $row['classId']);
                         $openrow = $dataOpenClass->fetch_array();
                         $dataKaistCourse = $conn->query("select * from match.kaistcourses where idkaistCourses = " . $openrow['courseId']);
                         $courserow = $dataKaistCourse->fetch_array();
-                        echo "<TR><TD>".$openrow['tutorNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD></TR>";
+                        $link = "eval.php?semester=". $row['semester']. "&classId=".$row['idtutoring_match']. "&tutorNum=". $openrow['tutorNum'];
+                        echo "<TR><TD>".$openrow['tutorNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD><TD> <a href = '". $link. "' target='_blank'>".$row['semester']."</a></TD></TR>";
                     }
                     echo "</TABLE>";
                 }

@@ -26,8 +26,7 @@ if (isset($_GET["courseId"])) {
     else
         echo "grade: null";
 
-    $q = "select * from match.tuteegrade where tutorNum=". $_GET["tutor"]. " and classId in 
-                    (select idopen_class from match.open_class where courseId=". $_GET["courseId"].");";
+    $q = "select * from match.tuteegrade where tutorNum=". $_GET["tutor"]. ";";
     echo "<br><br><b>tutee's evalation</b>";
     echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
     echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD><TD>Comment</TD></TR>";
@@ -37,7 +36,9 @@ if (isset($_GET["courseId"])) {
             echo "<TR><TD>". $tuteeNow["grade"]. "</TD><TD>". $tuteeNow["satisfy"]. "</TD><TD>". $tuteeNow["comment"]. "</TD></TR>";
         }
     }
+
     echo "</TABLE>";
+    echo "<h1>getting all tutee evaluation: bring course Info or bring evaluation of selected course</h1>";
 }
 
 ?>

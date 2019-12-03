@@ -33,8 +33,10 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 
-if (!isset($_SESSION['studNum']))
-    echo "<h4>please Sign In</h4>";
+if (!isset($_SESSION['studNum'])){
+    echo "<h3>Please Sign In</h3>";
+    echo "<button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button>";
+}
 else {
     $tuteeCheck = $conn -> query("select * from match.tutee where stunum = ". $_SESSION['studNum']);
     if ($tuteeCheck -> num_rows > 0) {

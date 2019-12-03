@@ -58,8 +58,10 @@ if ($conn-> connect_error) {
 // tutor만 들어올 수 있도록 추가
 // 로그인 이후에 들어올 수 있도록 추가
 
-if (!isset($_SESSION['studNum']))
+if (!isset($_SESSION['studNum'])){
     echo "<h4>please Sign In</h4>";
+    echo "<button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button>";
+}
 else {
     $tutorCheck = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum']);
     if ($tutorCheck->num_rows > 0) {

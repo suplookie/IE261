@@ -1,10 +1,24 @@
 <html>
 <head>
     <style>
-        button, input[type=submit], input[type=reset]{
-            width: 120px;
-            height: 40px;
+        table{
+            alignment: center;
             font-size: 20px;
+            margin-top: 3em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+            width: max-content;
+        }
+        td{
+            text-align: center;
+        }
+        button, input[type=submit], input[type=reset]{
+            width: 130px;
+            height: 40px;
+            font-size: 18px;
             margin: 30px;
             left: 8px;
             position: relative;
@@ -43,7 +57,7 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 
-echo "<FORM METHOD=\"POST\" ACTION=\"delete.php\" target='popwin'>";
+echo "<FORM METHOD=\"POST\" ACTION=\"delete.php\">";
 
 function checktutortutee($x, $y) {
     $tutorcheck = $y -> query("select * from match.tutor where stuNum = '$x' limit 1;");
@@ -61,7 +75,7 @@ if (checktutortutee($studentnumber, $conn) == 0) {
     $selection = "select * from match.open_class where idopen_class not in (select classId from match.tutoring_match) and tutorNum = '$studentnumber';";
     $result = $conn->query($selection);
     if ($result->num_rows > 0) {
-        echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
+        echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
         echo "<TR><TD></TD><TD>Course</TD><TD>Professor</TD><TD>Price</TD></TR>";
         while ($now = $result->fetch_assoc()) {
             $id = $now['idopen_class'];
@@ -72,7 +86,7 @@ if (checktutortutee($studentnumber, $conn) == 0) {
         echo "</TABLE>";
     }
     else {
-        echo "<div id='please' align='center'><h1>Warning: NO OPEN CLASS</h1></div>";
+        echo "<div id='please' align='center'>Warning: NO OPEN CLASS</div>";
     }
 }
 else if (checktutortutee($studentnumber, $conn) == 1) {
@@ -80,7 +94,7 @@ else if (checktutortutee($studentnumber, $conn) == 1) {
     $selection = "select * from match.wishlist where TuteeNum = '$studentnumber';";
     $result = $conn->query($selection);
     if ($result->num_rows > 0) {
-        echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
+        echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
         echo "<TR><TD></TD><TD>Course</TD><TD>Professor</TD><TD>Price Upper Bound</TD></TR>";
         while ($now = $result->fetch_assoc()) {
             $id = $now['idopen_class'];
@@ -99,11 +113,11 @@ else {
 }
 
 if (checktutortutee($studentnumber, $conn) == 0) {
-    echo "<INPUT type=\"submit\" value=\"delete\" >&nbsp;";
+    echo "<p align='center'><INPUT type=\"submit\" value=\"Delete\" ></p>&nbsp;";
 }
 else if (checktutortutee($studentnumber, $conn) == 1) {
-    echo "<INPUT type=\"submit\" value=\"delete\" >&nbsp;";
-    echo "<button type='button' onclick=\"location.href ='mywish.php' \"> Add wishlist </button>";
+    echo "<p align='center'><INPUT type=\"submit\" value=\"Delete\" >&nbsp;";
+    echo "<button type='button' onclick=\"location.href ='mywish.php' \"> Add Wishlist </button></p>";
 }
 echo "</FORM>";
 $conn -> close();

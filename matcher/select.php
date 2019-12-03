@@ -1,10 +1,24 @@
 <html>
 <head>
     <style>
-        button, input[type=submit], input[type=reset]{
-            width: 120px;
-            height: 40px;
+        table{
+            alignment: center;
             font-size: 20px;
+            margin-top: 2em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+            width: max-content;
+        }
+        td{
+            text-align: center;
+        }
+        button, input[type=submit], input[type=reset]{
+            width: 130px;
+            height: 40px;
+            font-size: 18px;
             margin: 30px;
             left: 8px;
             position: relative;
@@ -22,6 +36,12 @@
             text-align: center;
             margin-top: 3em;
             font-size: 3em;
+            font-weight: bold;
+        }
+        #select{
+            text-align: center;
+            margin-top: 2em;
+            font-size: 1em;
             font-weight: bold;
         }
     </style>
@@ -54,9 +74,9 @@ else {
                         (select classId from match.tutoring_match)";
         //모든 오픈클래스가 아닌, tutoring match에 없는 클래스만 가져오는거로 바꾸기
         $result = $conn -> query($selection);
-        echo "<div id='please' align='center'>Select class you want. If not, add to your wishlist</div>";
+        echo "<div id='select' align='center'>Select class you want. If not, add to your wishlist</div>";
         if ($result -> num_rows > 0) {
-            echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
+            echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
             echo "<TR><TD></TD></TD><TD>Course</TD><TD>Professor</TD><TD>TutorNum</TD><TD>Tutor Name</TD><TD>Tutor Department</TD><TD>Price</TD></TR>";
             while ($now = $result -> fetch_assoc()) {
                 $classid = $now["idopen_class"];
@@ -79,8 +99,8 @@ else {
         else {
             echo "<div id='please' align='center'>Warning: NO CLASS OPENED</div>";
         }
-        echo "<p><INPUT type=\"submit\" value=\"Submit\"> &nbsp;";
-        echo "<button type=\"button\" onclick=\"location.href ='mywish.php' \"> Add wishlist </button></p>";
+        echo "<p align='center'><INPUT type=\"submit\" value=\"Submit\"> &nbsp;";
+        echo "<button type=\"button\" onclick=\"location.href ='mywish.php' \"> Add Wishlist </button></p>";
         echo "</FORM>";
     }
     else

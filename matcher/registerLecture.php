@@ -4,7 +4,7 @@
         table{
             alignment: center;
             font-size: 20px;
-            margin-top: 5em;
+            margin-top: 3em;
             border-collapse: separate;
             border: 2px solid black;
             border-radius: 20px;
@@ -15,10 +15,10 @@
             text-align: center;
         }
         button, input[type=submit], input[type=reset]{
-            width: 120px;
+            width: 130px;
             height: 40px;
-            font-size: 20px;
-            margin: 30px;
+            font-size: 18px;
+            margin: 10px;
             left: 8px;
             position: relative;
             background-color: white;

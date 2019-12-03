@@ -3,9 +3,9 @@
     <TITLE>Tutor-Tutee Matching System</TITLE>
     <style>
         button, input[type=submit], input[type=reset]{
-            width: 120px;
+            width: 130px;
             height: 40px;
-            font-size: 20px;
+            font-size: 18px;
             margin: 30px;
             left: 8px;
             position: relative;
@@ -41,5 +41,6 @@ if (!isset($_SESSION["studNum"])) {
 else {
     session_destroy();
     echo "<div id='please' align='center'>Log Out Successed</div>";
+    echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Main Menu</button></p>";
 }
 ?>

@@ -69,6 +69,12 @@ else {
         if (isset($_POST["open"])) {   //from registerLecture itself (after clicking submit button)
             $openclass = "insert into match.open_class (tutorNum, price, courseId) values (".$_SESSION["studNum"].",". $_POST["price"]. ",". $_POST["courses"].");";
             $conn->query($openclass);
+
+            $gradeCheck = $conn->query("select * from match.tutorgrade where stuNum = " . $_SESSION['studNum'] . " and courseId = " . $_POST["courses"]);
+            if($gradeCheck->num_rows == 0) {
+                $insertgrade = "insert into match.tutorgrade (stunum, grade, courseId) values (" . $_SESSION["studNum"] . "," . $_POST["grade"] . "," . $_POST["courses"] . ");";
+                $conn->query($insertgrade);
+            }
         }
 
         $qu = "select * from match.kaistcourses";

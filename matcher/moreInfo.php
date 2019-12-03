@@ -25,12 +25,13 @@
     //로그인했을때 첫화면이기도 하기때문에 signin시 입력한 정보(학번 이름 이메일)이용해 정보 가져오기
     //signup시에도 연결되므로 그때 정보를 데이터베이스에 넣고 내정보 보여주기
     //$servername = "110.76.66.224";
-    $servername = "143.248.171.170";
+    $servername = "localhost";
     $username = "test";
     $password = "1234";
     $dbname = "match";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
+    session_start();
 
     if ($conn-> connect_error) {
         die("Connection failed: " + $conn -> connect_error);
@@ -38,7 +39,9 @@
 
     echo "<FORM METHOD=\"post\" ACTION=\"moreInfo.php\">";
 
-    if ($_POST["name"] != null) {   //from sign up
+    if (isset($_POST["name"])) {   //from sign up
+        $_SESSION['studNum'] = $_POST["StudNum"];
+        $_SESSION['password'] = $_POST['password'];
         echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\" border='1'>";
         echo "<TR><TD align='right'>Name &nbsp;</TD><TD><input type='text' name='name' value=". $_POST["name"]. "></TD>";
         echo "<TR><TD align='right'>Password &nbsp;</TD><TD><input type='password' name='password'></TD></TR>";
@@ -73,8 +76,9 @@
         echo "</FORM>";
     }
 
-    else if ($_POST["StudNum"] != null) { //from sign in
-        if ($_POST["course"] != null && $_POST["prof"] != null && $_POST["grade"] != null) {        //update tutor grade
+    else if (isset($_POST["StudNum"]) || isset($_SESSION['studNum'])) { //from sign in
+        echo "ASdf";
+        if (isset($_POST["course"])&& isset($_POST["prof"]) && isset($_POST["grade"])) {        //update tutor grade
             $qu = "select * from match.kaistcourses where course='". $_POST["course"]. "' and prof= '". $_POST["prof"]. "'";
             $courseCon = $conn->query($qu);
             $course=$courseCon->fetch_assoc();
@@ -82,9 +86,17 @@
             $conn->query($query);
         }
 
-        $selection = "select * from match.kaist_stu where stu_num = ". $_POST["StudNum"]. " and password = ".$_POST["password"];
+        if (isset($_SESSION['studNum'])) {
+            $selection = "select * from match.kaist_stu where stu_num = ". $_SESSION["studNum"]. " and password = ".$_SESSION["password"];
+        }
+        else
+            $selection = "select * from match.kaist_stu where stu_num = ". $_POST["StudNum"]. " and password = ".$_POST["password"];
         $result = $conn -> query($selection);
         if ($result -> num_rows > 0) {
+            if (!isset($_SESSION['studNum'])) {
+                $_SESSION['studNum'] = $_POST["StudNum"];
+                $_SESSION['password'] = $_POST['password'];
+            }
             $now = $result -> fetch_assoc();
             echo "<input type='hidden' name='StudNum' value=". $now["stu_num"]. ">";
             echo "<TABLE CELLPADDING = \"5\" CELLSPACING = \"1\" border='1'>";
@@ -135,13 +147,14 @@
                 echo "</TABLE>";
             }
         }
-        else {
-            echo "no user information exists. Please sign up. <br></FORM>";
+        else {          //login fail
+            echo "Student ID or password is wrong. <br></FORM>";
             echo "<button type='button' onclick=\"location.href = 'http://localhost:8080/matcher/main.html'\">Back</button>";
         }
     }
-    else {  //from mypage
-        echo "not implemented<br>";
+    if (isset($_SESSION['studNum'])) echo "asas";
+    else {  //from mypage not logged in
+        echo "Please log in<br>";
     }
 
     $conn -> close();

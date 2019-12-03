@@ -54,10 +54,11 @@ else {
                 $course = $courseCon -> fetch_assoc();
                 $tutorCon = $conn -> query("select * from match.kaist_stu where stu_num=". $now["tutorNum"]);
                 $tutor = $tutorCon ->fetch_assoc();
+                $link = "tutorInfo.php?tutor=". $tutor["stu_num"]. "&courseId=".$now["courseId"];
                 echo "<TR><TD><input type='radio' name='class' value=". $classid. "></TD>";
                 echo "<TD>". $course["course"]. "</TD>";
                 echo "<TD>". $course["prof"]. "</TD>";
-                echo "<TD>". $tutor["stu_num"]. "</TD>";
+                echo "<TD> <a href = '". $link. "' target='_blank'>". $tutor["stu_num"]. "</a></TD>";
                 echo "<TD>". $tutor["name"]. "</TD>";
                 echo "<TD>". $tutor["department"]. "</TD>";
                 echo "<TD>". $now["price"]. "</TD>";

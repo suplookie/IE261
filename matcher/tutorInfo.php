@@ -30,11 +30,11 @@ if (isset($_GET["courseId"])) {
                     (select idopen_class from match.open_class where courseId=". $_GET["courseId"].");";
     echo "<br><br><b>tutee's evalation</b>";
     echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
-    echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD></TR>";
+    echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD><TD>Comment</TD></TR>";
     $tuteeGrade = $conn->query($q);
     if ($tuteeGrade->num_rows > 0) {
         while ($tuteeNow = $tuteeGrade->fetch_assoc()) {
-            echo "<TR><TD>". $tuteeNow["grade"]. "</TD><TD>". $tuteeNow["satisfy"]. "</TD></TR>";
+            echo "<TR><TD>". $tuteeNow["grade"]. "</TD><TD>". $tuteeNow["satisfy"]. "</TD><TD>". $tuteeNow["comment"]. "</TD></TR>";
         }
     }
     echo "</TABLE>";

@@ -3,19 +3,36 @@
     <TITLE>Sign In</TITLE>
     <style>
         input[type=submit]{
-            width: 90px;
-            height: 25px;
-            margin: 5px;
+            width: 120px;
+            height: 40px;
+            font-size: 20px;
+            margin: 30px;
             left: 8px;
             position: relative;
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 5px;
             color:black;
+            font-weight: bold;
         }
         input[type=submit]:hover{
             color:white;
             background-color: black;
+        }
+        table{
+            font-size: 20px;
+            margin-top: 5em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+        }
+        td{
+            text-align: center;
+        }
+        input[type=number], input[type=password]{
+            font-size: 20px;
         }
     </style>
 </HEAD>
@@ -23,15 +40,15 @@
 <FORM METHOD="post" ACTION="moreInfo.php">
     <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1" align="center">
         <TR>
-            <TD align="right">Student Number</TD>
-            <TD><INPUT type="number" name="StudNum" required>
+            <TD align="right" width="40%">Student Number</TD>
+            <TD><INPUT type="number" name="StudNum" required minlength="8">
         </TR>
         <TR>
-            <TD align="right">Password</TD>
-            <TD><INPUT type="password" name="password" required></TD>
+            <TD align="right" width="40%">Password</TD>
+            <TD><INPUT type="password" name="password" required minlength="4"></TD>
         </TR>
-        <TR><TD colspan="2" align="center"><p><INPUT type="submit" value="Login"></p></TD></TR>
     </TABLE>
+    <p align="center"><INPUT type="submit" value="Login"></p>
 </FORM>
 </BODY>
 </HTML>

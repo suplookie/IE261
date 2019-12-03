@@ -20,7 +20,7 @@ $course1 = $courseconnect->fetch_assoc();
 $insertion = "insert into match.wishlist(priceUpper, TuteeNum, courseId) values ($_POST[priceUpper], $studentnumber, $course1[idkaistCourses]);";
 mysqli_query($conn, $insertion);
 echo "Successfully Added";
-echo "<br><button type='button' onclick=\"location.href ='http://localhost:81/matcher/wishlist.php' \">Go Back</button>";
+echo "<br><button type='button' onclick=\"location.href ='wishlist.php' \">Go Back</button>";
 
 $conn->close();
 ?>

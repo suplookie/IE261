@@ -30,12 +30,12 @@ function checktutortutee($x, $y) {
 if (checktutortutee($studentnumber, $conn) == 0) {
     $deletion = "Delete from match.open_class where idopen_class = $_POST[class];";
     mysqli_query($conn, $deletion);
-    echo "<br><button type='button' onclick=\"location.href ='http://localhost:81/matcher/wishlist.php' \">Go Back</button>";
+    echo "<br><button type='button' onclick=\"location.href ='wishlist.php' \">Go Back</button>";
 }
 else if (checktutortutee($studentnumber, $conn) == 1) {
     $deletion = "Delete from match.wishlist where idwishlist = $_POST[class];";
     mysqli_query($conn, $deletion);
-    echo "<br><button type='button' onclick=\"location.href ='http://localhost:81/matcher/wishlist.php' \">Go Back</button>";
+    echo "<br><button type='button' onclick=\"location.href ='wishlist.php' \">Go Back</button>";
 }
 
 

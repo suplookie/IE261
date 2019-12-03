@@ -43,7 +43,7 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 
-echo "<FORM METHOD=\"POST\" ACTION=\"http://localhost:81/matcher/delete.php\" target='popwin'>";
+echo "<FORM METHOD=\"POST\" ACTION=\"delete.php\" target='popwin'>";
 
 function checktutortutee($x, $y) {
     $tutorcheck = $y -> query("select * from match.tutor where stuNum = '$x' limit 1;");

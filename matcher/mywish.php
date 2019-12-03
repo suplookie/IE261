@@ -19,11 +19,9 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 
-
-
 ?>
         <h4>Add to your wishlist if there's no lecture you want</h4>
-        <FORM METHOD="post" ACTION="http://localhost:81/matcher/addwish.php">
+        <FORM METHOD="post" ACTION="addwish.php">
             <TABLE border="0" width="500" CELLPADDING="5" CELLSPACING="1">
                 <TR>
                     <TD>Course</TD>
@@ -40,7 +38,7 @@ if ($conn-> connect_error) {
             </TABLE>
             <p><INPUT type="submit" value="Add">
                 <INPUT type="reset" value="Clear">
-                <button onclick="location.href = 'http://localhost:81/matcher/wishlist.php'">Cancel</button>
+                <button onclick="location.href = 'wishlist.php'">Cancel</button>
             </p>
         </FORM>
 

@@ -10,6 +10,7 @@
             border-radius: 20px;
             border-spacing: 5px 20px;
             font-weight: bold;
+            width: max-content;
         }
         td{
             text-align: center;
@@ -38,6 +39,13 @@
             text-align: center;
             margin-top: 3em;
             font-size: 3em;
+            font-weight: bold;
+        }
+        #wish{
+            text-align: center;
+            margin-top: 1em;
+            margin-bottom: -1em;
+            font-size: 2em;
             font-weight: bold;
         }
     </style>
@@ -115,17 +123,17 @@ else {
         echo "</FORM>";
 
 
-        echo "<div id='please' align='center'>Tutee Wish list</div>";
+        echo "<div id='wish' align='center'>Tutee Wish list</div>";
         $sel = "select * from match.wishlist;";
         $result = $conn->query($sel);
         if ($result->num_rows > 0) {
             echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
-            echo "<TR><TD></TD><TD>Course</TD><TD>Professor</TD><TD>Price Upper Bound</TD></TR>";
+            echo "<TR><TD>Course</TD><TD>Professor</TD><TD>Price Upper Bound</TD></TR>";
             while ($now = $result->fetch_assoc()) {
                 $id = $now['idwishlist'];
                 $courseCon = $conn->query("select * from kaistcourses where idkaistCourses=" . $now["courseId"]);
                 $course = $courseCon->fetch_assoc();
-                echo "<TR><TD><input type='radio' name='class' value=$id></TD><TD>" . $course["course"] . "</TD><TD>" . $course["prof"] . "</TD><TD>" . $now["priceUpper"] . "</TD></TR>";
+                echo "<TR><TD>" . $course["course"] . "</TD><TD>" . $course["prof"] . "</TD><TD>" . $now["priceUpper"] . "</TD></TR>";
             }
             echo "</TABLE>";
         } else {

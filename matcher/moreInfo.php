@@ -43,6 +43,13 @@
             font-size: 3em;
             font-weight: bold;
         }
+        #wish{
+            text-align: center;
+            margin-top: 1em;
+            margin-bottom: -1em;
+            font-size: 2em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <?php
@@ -163,6 +170,8 @@
             echo "</FORM>";
 
             $tutorOrtutee = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum'].";");
+
+            echo "<div id='wish' align='center'>Matched Classes</div>";
 
             if($tutorOrtutee->num_rows > 0){ // 튜터일 때
                 $tutorMatch = $conn->query("select * from match.tutoring_match where classId in (select idopen_class from match.open_class where tutorNum = " . $_SESSION['studNum'].");");

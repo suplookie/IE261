@@ -64,19 +64,15 @@ if ($conn-> connect_error) {
         <div id='select' align='center'>Add to your wishlist if there's no lecture you want</div>
         <FORM METHOD="post" ACTION="addwish.php">
             <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1" align="center">
-<TR>
+                <TR>
                     <TD>Course</TD>
                     <TD>
-                        <SELECT name = 'id'>
-                    <?php
-                    while ($row = $courseCon->fetch_array()) {
-                    ?>
-
+                        <SELECT name = 'id' required>
                         <?php
-                        echo "<option value=" . $row['idkaistCourses'] . ">" . $row['course'] . " by " . $row['prof'] . "</option>";
-?>
-
-                        <?php
+                        $qu = "select * from match.kaistcourses";
+                        $courseCon = $conn->query($qu);
+                        while ($row = $courseCon->fetch_array()) {
+                            echo "<option value=" . $row['idkaistCourses'] . ">" . $row['course'] . " by " . $row['prof'] . "</option>";
                         }
                         ?>
                         </SELECT>

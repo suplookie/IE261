@@ -87,7 +87,7 @@ if (isset($_GET["courseId"])) {
     }
 
     echo "</TABLE>";
-    if ($evals == 0) echo "Sorry, no evaluation exists";
+    if ($evals == 0) echo "<div id='please' align='center'>Sorry, no evaluation exists</div>";
     //echo "<div id='please' align='center'>getting all tutee evaluation: bring course Info or bring evaluation of selected course</div>";
 }
 

@@ -157,12 +157,7 @@
             echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='text' name='email' value=". $now["email"]. "></TD></TR>";
             $tutorCheck = "select * from match.tutor where stuNum=". $_POST["StudNum"];
             $tutorRes = $conn -> query($tutorCheck);
-            /*if ($tutorRes -> num_rows > 0) {        //if tutor, add table for upgrading grade
-                //$tutor = $tutorRes -> fetch_assoc();
-                echo "<TR><TD align='right' rowspan='3'>Add Grade&nbsp;</TD><TD><input type='text' name='course' placeholder='course'></TD></TR>";
-                echo "<TR><TD><input type='text' name='prof' placeholder='professor'></TD></TR>";
-                echo "<TR><TD><input type='text' name='grade' placeholder='grade'></TD></TR>";
-            }*/
+
             echo "</TABLE>";
             echo "<p align='center'><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p>";
             echo "</FORM>";

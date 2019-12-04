@@ -73,7 +73,7 @@ if (isset($_GET["courseId"])) {
             $classId = $matchNow["classId"];            //tuteegrade에 연결된, 수업의 classid
             $qu = "select * from match.open_class where idopen_class=". $classId. ";";
             $opens = $conn->query($qu);
-            echo $que. "<br>". $qu;
+            //echo $que. "<br>". $qu;
             if($opens->num_rows > 0){
                 $openNow = $opens->fetch_assoc();
                 if ($openNow["courseId"] == $_GET["courseId"])

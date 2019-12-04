@@ -197,7 +197,8 @@
                         $dataKaistCourse = $conn->query("select * from match.kaistcourses where idkaistCourses = " . $openrow['courseId']);
                         $courserow = $dataKaistCourse->fetch_array();
                         $link = "eval.php?semester=". $row['semester']. "&classId=".$row['idtutoring_match']. "&tutorNum=". $openrow['tutorNum'];
-                        echo "<TR><TD>".$openrow['tutorNum']."</TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD><TD> <a href = '". $link. "' target='_blank'>".$row['semester']."</a></TD></TR>";
+                        $linkTutor = "tutorInfo.php?tutor=". $openrow["tutorNum"]. "&courseId=".$openrow["courseId"];
+                        echo "<TR><TD><a href='". $linkTutor. "' target = '_blank'>".$openrow['tutorNum']."</a></TD><TD>".$openrow['price']."</TD><TD>".$courserow['course']."</TD><TD>".$courserow['prof']."</TD><TD> <a href = '". $link. "' target='_blank'>".$row['semester']."</a></TD></TR>";
                     }
                     echo "</TABLE>";
                 }

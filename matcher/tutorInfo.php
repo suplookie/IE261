@@ -64,6 +64,7 @@ if (isset($_GET["courseId"])) {
     echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
     echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD><TD>Comment</TD><TD>Semester</TD></TR>";
     $tuteeGrade = $conn->query($q);
+    $evals = 0;
     if ($tuteeGrade->num_rows > 0) {
         while ($tuteeNow = $tuteeGrade->fetch_assoc()) {        //tuteeNow: 어떤 튜터에 대한 tuteegrade 1개
             $matchId = $tuteeNow["classId"];            //그 tuteegrade에 연결된, tutee가 받은 수업의 matchId
@@ -76,15 +77,18 @@ if (isset($_GET["courseId"])) {
             //echo $que. "<br>". $qu;
             if($opens->num_rows > 0){
                 $openNow = $opens->fetch_assoc();
-                if ($openNow["courseId"] == $_GET["courseId"])
+                if ($openNow["courseId"] == $_GET["courseId"]){
                     echo "<TR><TD>". $tuteeNow["grade"]. "</TD><TD>". $tuteeNow["satisfy"]. "</TD><TD>". $tuteeNow["comment"]. "</TD><TD>". $matchNow["semester"]. "</TD></TR>";
+                    $evals ++;
+                }
             }//else
                 //echo "<TR><TD>$que</TD><TD>$qu</TD></TR>";
         }
     }
 
     echo "</TABLE>";
-    echo "<div id='please' align='center'>getting all tutee evaluation: bring course Info or bring evaluation of selected course</div>";
+    if ($evals == 0) echo "Sorry, no evaluation exists";
+    //echo "<div id='please' align='center'>getting all tutee evaluation: bring course Info or bring evaluation of selected course</div>";
 }
 
 ?>

@@ -53,7 +53,7 @@
     //signup시에도 연결되므로 그때 정보를 데이터베이스에 넣고 내정보 보여주기
     //$servername = "110.76.66.224";
     session_start();
-    $servername = "143.248.171.107";
+    $servername = "143.248.219.182";
     $username = "test";
     $password = "1234";
     $dbname = "match";

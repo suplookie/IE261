@@ -86,7 +86,7 @@ if (checktutortutee($studentnumber, $conn) == 0) {
         echo "</TABLE>";
     }
     else {
-        echo "<div id='please' align='center'>Warning: NO OPEN CLASS</div>";
+        echo "<div id='please' align='center'>No opened class</div>";
     }
 }
 else if (checktutortutee($studentnumber, $conn) == 1) {
@@ -104,7 +104,7 @@ else if (checktutortutee($studentnumber, $conn) == 1) {
         }
         echo "</TABLE>";
     } else {
-        echo "<div id='please' align='center'>Warning: NO TRADE HISTORY IN THE PERIOD</div>";
+        echo "<div id='please' align='center'>Empty Wishlist</div>";
     }
 }
 else {

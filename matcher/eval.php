@@ -94,7 +94,7 @@ else {
                         <input type='radio' name='satisfy' value='5'>5 &nbsp;</TD></TR>";
             echo "<TR><TD align='right'>Comment &nbsp;</TD><TD><input type='text' name='comment' required maxlength='45'></TD></TR>";
             echo "</TABLE>";
-            echo "<p align='center'><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
+            echo "<p align='center'><INPUT type=\"submit\" value=\"Submit\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
             echo "</FORM>";
         }
         else {

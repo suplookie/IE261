@@ -79,8 +79,8 @@ if ($conn-> connect_error) {
                     </TD>
                 </TR>
                 <TR>
-                    <TD>Price Upper Bound</TD>
-                    <TD><INPUT type="number" name="priceUpper" required></TD>
+                    <TD>Price upper bound</TD>
+                    <TD><INPUT type="number" name="priceUpper" min="0" maxlength="6" required></TD>
                 </TR>
             </TABLE>
             <p align='center'><INPUT type="submit" value="Add">

@@ -1,3 +1,35 @@
+<html>
+<head>
+    <style>
+        table{
+            alignment: center;
+            font-size: 20px;
+            margin-top: 3em;
+            border-collapse: separate;
+            border: 2px solid black;
+            border-radius: 20px;
+            border-spacing: 5px 20px;
+            font-weight: bold;
+            width: max-content;
+        }
+        td{
+            text-align: center;
+        }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
+        }
+        #select{
+            text-align: center;
+            margin-top: 2em;
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 <?php
 session_start();
 $servername = $_SESSION["ip"];
@@ -12,24 +44,24 @@ if ($conn-> connect_error) {
 }
 
 if (isset($_GET["courseId"])) {
-    echo "tutor: ". $_GET["tutor"]. "<br>";
+    echo "<div id='select' align='center'>tutor: ". $_GET["tutor"]. "</div>";
     $course = $conn->query("select * from kaistcourses where idkaistCourses = ". $_GET["courseId"]. ";");
     if ($course->num_rows > 0){
         $courseNow = $course ->fetch_assoc();
-        echo "course: ". $courseNow["course"]. " by ". $courseNow["prof"]. "<br>";
+        echo "<div id='select' align='center'>course: ". $courseNow["course"]. " by ". $courseNow["prof"]. "</div>";
     }
     $query = "select * from match.tutorgrade where stunum = ". $_GET["tutor"]. " and courseId = ". $_GET["courseId"]. ";";
     $grade = $conn->query($query);
     if ($grade->num_rows > 0) {
         $now = $grade -> fetch_assoc();
-        echo "grade: ". $now["grade"];
+        echo "<div id='select' align='center'>grade: ". $now["grade"]."</div>";
     }
     else
-        echo "grade: null";
+        echo "<div id='select' align='center'>grade: null</div>";
 
     $q = "select * from match.tuteegrade where tutorNum=". $_GET["tutor"]. ";";
-    echo "<br><br><b>tutee's evalation</b>";
-    echo "<TABLE cellpadding='5' cellspacing='1' border='1'>";
+    echo "<br><div id='please' align='center'>tutee's evalation</div>";
+    echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
     echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD><TD>Comment</TD></TR>";
     $tuteeGrade = $conn->query($q);
     if ($tuteeGrade->num_rows > 0) {
@@ -39,7 +71,8 @@ if (isset($_GET["courseId"])) {
     }
 
     echo "</TABLE>";
-    echo "<h1>getting all tutee evaluation: bring course Info or bring evaluation of selected course</h1>";
+    echo "<div id='please' align='center'>getting all tutee evaluation: bring course Info or bring evaluation of selected course</div>";
 }
 
 ?>
+</html>

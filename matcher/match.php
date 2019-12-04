@@ -1,3 +1,15 @@
+<html>
+<head>
+    <style>
+        #please{
+            text-align: center;
+            margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 <?php
 
 session_start();
@@ -11,7 +23,7 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 if (!isset($_SESSION['studNum'])){
-    echo "<h4>ERROR! Please sign in again and retry</h4>";
+    echo "<div id='please' align='center'>ERROR! Please sign in again and retry</div>";
     //mail("hsk0306@kaist.ac.kr", "hi", "hi", "From: rushhour357@gmail.com\r\n");
 }
 else {
@@ -21,7 +33,8 @@ else {
     else $semester = $semester. "Fall";
     $query = "insert into match.tutoring_match (tuteeNum, semester, classId) values (".$tutee. ", '". $semester. "', ". $_POST["class"]. ");";
     $conn->query($query);
-    echo "<h4>Class successfully matched!</h4>";
+    echo "<div id='please' align='center'>Class successfully matched!</div>";
 
 }
 ?>
+</html>

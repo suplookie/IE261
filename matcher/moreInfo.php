@@ -27,9 +27,15 @@
             border-radius: 20px;
             border-spacing: 5px 20px;
             font-weight: bold;
+            width: max-content;
         }
         td{
             text-align: center;
+        }
+        select, input[type=text], input[type=passward]{
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
         }
         #please{
             text-align: center;
@@ -77,7 +83,7 @@
             $_SESSION['studNum'] = $_POST["StudNum"];
             $_SESSION['password'] = $_POST['password'];
             echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
-            echo "<TR><TD align='right'>Name &nbsp;</TD><TD><input type='text' name='name' value=". $_POST["name"]. "></TD>";
+            echo "<TR><TD align='right'>Name &nbsp;</TD><TD>". $_POST["name"]. "</TD>";
             echo "<TR><TD align='right'>Password &nbsp;</TD><TD><input type='password' name='password'></TD></TR>";
             echo "<TR><TD align='right'>Student Number &nbsp;</TD><TD>". $_POST["StudNum"]. "</TD>";
             echo "<TR><TD align='right'>Department &nbsp;</TD>
@@ -101,7 +107,7 @@
                     <option value=\"MSB\">Business</option>
                     <option value=\"Fresh\">Freshman</option>
                  </select></TD></TR>";
-            echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='text' name='email' value=". $_POST["email"]. "></TD>";
+            echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='email' name='email' value=". $_POST["email"]. "></TD>";
             echo "</TABLE>";
             echo "<p align='center'><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p>";
             echo "</FORM>";
@@ -125,7 +131,7 @@
             $now = $result -> fetch_assoc();
             echo "<input type='hidden' name='StudNum' value=". $now["stu_num"]. ">";
             echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
-            echo "<TR><TD align='right'>Name &nbsp;</TD><TD><input type='text' name='Name' value=". $now["name"]. "></TD></TR>";
+            echo "<TR><TD align='right'>Name &nbsp;</TD><TD>". $now["name"]. "</TD></TR>";
             echo "<TR><TD align='right'>Password &nbsp;</TD><TD><input type='password' name='password' required></TD></TR>";
             echo "<TR><TD align='right'>Student Number &nbsp;</TD><TD>". $now["stu_num"]. "</TD></TR>";
             echo "<TR><TD align='right'>Department &nbsp;</TD><TD><select name=\"department\">
@@ -179,7 +185,7 @@
                     echo "</TABLE>";
                 }
             }
-            else {
+            else { // 튜티일 때
                 $tuteeMatch = $conn->query("select * from match.tutoring_match where tuteeNum = " . $_SESSION['studNum'].";");
                 if($tuteeMatch->num_rows > 0) {
                     echo "<TABLE border=\"0\" width=\"500\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
@@ -205,6 +211,7 @@
     }
     else {  //from mypage not logged in
         echo "<div id='please' align='center'>Please Sign In</div>";
+        echo "<p align='center'><button type='button' onclick=\"location.href = 'main.html'\">Back</button></p>";
     }
 
     $conn -> close();

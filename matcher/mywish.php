@@ -50,35 +50,41 @@
 </HEAD>
 <BODY>
 <?php
-
 session_start();
 $servername = $_SESSION["ip"];
 $username = "test";
 $password = "1234";
 $dbname = "match";
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 $studentnumber = $_SESSION['studNum'];
-
 if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
-
 ?>
         <div id='select' align='center'>Add to your wishlist if there's no lecture you want</div>
         <FORM METHOD="post" ACTION="addwish.php">
             <TABLE border="0" width="500" CELLPADDING = "5" CELLSPACING = "1" align="center">
-                <TR>
+<TR>
                     <TD>Course</TD>
-                    <TD><INPUT type="text" name="course" required>
+                    <TD>
+                        <SELECT name = 'id'>
+                    <?php
+                    while ($row = $courseCon->fetch_array()) {
+                    ?>
+
+                        <?php
+                        echo "<option value=" . $row['idkaistCourses'] . ">" . $row['course'] . " by " . $row['prof'] . "</option>";
+?>
+
+                        <?php
+                        }
+                        ?>
+                        </SELECT>
+                    </TD>
                 </TR>
                 <TR>
                     <TD>Price Upper Bound</TD>
                     <TD><INPUT type="number" name="priceUpper" required></TD>
-                </TR>
-                <TR>
-                    <TD>Professor</TD>
-                    <TD><INPUT type="text" name="prof" required></TD>
                 </TR>
             </TABLE>
             <p align='center'><INPUT type="submit" value="Add">

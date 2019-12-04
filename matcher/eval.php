@@ -34,6 +34,12 @@
         select, input[type=number]{
             font-size: 20px;
         }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -50,7 +56,7 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 if (!isset($_SESSION['studNum'])){
-    echo "<h4>ERROR! Please sign in again and retry</h4>";
+    echo "<div id='please' align='center'>ERROR! Please sign in again and retry</div>";
 }
 else {
     if (isset($_GET["semester"])) {
@@ -92,18 +98,18 @@ else {
             echo "</FORM>";
         }
         else {
-            echo "<h3>Not a evaluation period</h3>";
+            echo "<div id='please' align='center'>Not a evaluation period</div>";
         }
     }
     else {
         $grades = $conn->query("select * from match.tuteegrade where classId=". $_POST["classId"]. ";");
         if ($grades->num_rows > 0) {
-            echo "Already evaluated";
+            echo "<div id='please' align='center'>Already evaluated</div>";
         }
         else {
             $que = "insert into match.tuteegrade (grade, classId, tutorNum, satisfy, comment) values ('". $_POST["grade"]. "', ". $_POST["classId"]. ", ". $_POST["tutorNum"]. ", ". $_POST["satisfy"]. ", '". $_POST["comment"]. "');";
             $conn->query($que);
-            echo "Thank you for Evaluation";
+            echo "<div id='please' align='center'>Thank you for Evaluation</div>";
         }
     }
 }

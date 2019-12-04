@@ -19,7 +19,7 @@
             width: 130px;
             height: 40px;
             font-size: 18px;
-            margin: 30px;
+            margin: 10px;
             left: 8px;
             position: relative;
             background-color: white;
@@ -97,7 +97,7 @@ else if (checktutortutee($studentnumber, $conn) == 1) {
         echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
         echo "<TR><TD></TD><TD>Course</TD><TD>Professor</TD><TD>Price Upper Bound</TD></TR>";
         while ($now = $result->fetch_assoc()) {
-            $id = $now['idopen_class'];
+            $id = $now['idwishlist'];
             $courseCon = $conn->query("select * from kaistcourses where idkaistCourses=" . $now["courseId"]);
             $course = $courseCon->fetch_assoc();
             echo "<TR><TD><input type='radio' name='class' value=$id></TD><TD>" . $course["course"] . "</TD><TD>" . $course["prof"] . "</TD><TD>" . $now["priceUpper"] . "</TD></TR>";

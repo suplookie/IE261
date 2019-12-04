@@ -2,15 +2,17 @@
 <head>
     <style>
         button, input[type=submit], input[type=reset]{
-            width: 90px;
-            height: 25px;
-            margin: 5px;
+            width: 130px;
+            height: 40px;
+            font-size: 18px;
+            margin: 10px;
             left: 8px;
             position: relative;
             background-color: white;
-            border: 1px solid black;
+            border: 2px solid black;
             border-radius: 5px;
             color:black;
+            font-weight: bold;
         }
         button:hover, input[type=submit]:hover, input[type=reset]:hover{
             color:white;
@@ -19,7 +21,7 @@
         table{
             alignment: center;
             font-size: 20px;
-            margin-top: 1em;
+            margin-top: 3em;
             border-collapse: separate;
             border: 2px solid black;
             border-radius: 20px;
@@ -28,6 +30,12 @@
         }
         td{
             text-align: center;
+        }
+        #please{
+            text-align: center;
+            margin-top: 3em;
+            font-size: 3em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -55,17 +63,14 @@
     if (isset($_POST["name"])) {   //from sign up
         $checkDup = $conn->query("select * from match.kaist_stu where stu_num = ". $_POST['StudNum']);
         if ($checkDup -> num_rows > 0)
-            echo "Student ID is already registered. ";
+            echo "<div id='please' align='center'>Student ID is already registered.</div>";
         else {
             $kaist = "insert into match.kaist_stu (stu_num, name, department, email, password) values (". $_POST["StudNum"]. ", '". $_POST["name"]. "', '". $_POST["department"]. "', '". $_POST["email"]. "', '". $_POST["password"]. "');";
-            $turtee = 1;
             $conn->query($kaist);
             if ($_POST["tt"] == "tutor") {
-                $turtee = 1;
                 $conn->query("insert into match.tutor (stuNum, avgrade) values (". $_POST["StudNum"]. ", '0');");
             }
             else{
-                $turtee = 2;
                 $conn->query("insert into match.tutee (stunum) values (". $_POST["StudNum"]. ");");
             }
             $_SESSION['studNum'] = $_POST["StudNum"];
@@ -96,13 +101,8 @@
                     <option value=\"Fresh\">Freshman</option>
                  </select></TD></TR>";
             echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='text' name='email' value=". $_POST["email"]. "></TD>";
-            /*if(isset($_POST["tutor"])) {
-                echo "<TR><TD align='right' rowspan='3'>Add Grade&nbsp;</TD><TD><input type='text' name='course' placeholder='course'></TD></TR>";
-                echo "<TR><TD><input type='text' name='prof' placeholder='professor'></TD></TR>";
-                echo "<TR><TD><input type='text' name='grade' placeholder='grade'></TD></TR>";
-            }*/
-            echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p></TD></TR>";
             echo "</TABLE>";
+            echo "<p align='center'><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p>";
             echo "</FORM>";
         }
     }
@@ -156,8 +156,8 @@
                 echo "<TR><TD><input type='text' name='prof' placeholder='professor'></TD></TR>";
                 echo "<TR><TD><input type='text' name='grade' placeholder='grade'></TD></TR>";
             }*/
-            echo "<TR><TD colspan='2' align='center'><p><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p></TD></TR>";
             echo "</TABLE>";
+            echo "<p align='center'><INPUT type=\"submit\" value=\"update\">&nbsp;<INPUT type=\"reset\" value='clear'></p>";
             echo "</FORM>";
 
             $tutorOrtutee = $conn->query("select * from match.tutor where stuNum = " . $_SESSION['studNum'].";");
@@ -196,15 +196,14 @@
                 }
             }
 
-
         }
         else {          //login fail
-            echo "Student ID or password is wrong. <br></FORM>";
-            echo "<button type='button' onclick=\"location.href = 'main.html'\">Back</button>";
+            echo "<div id='please' align='center'>Student ID or password is wrong.</div></FORM>";
+            echo "<p align='center'><button type='button' onclick=\"location.href = 'main.html'\">Back</button></p>";
         }
     }
     else {  //from mypage not logged in
-        echo "Please log in<br>";
+        echo "<div id='please' align='center'>Please Sign In</div>";
     }
 
     $conn -> close();

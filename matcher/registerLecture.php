@@ -114,7 +114,7 @@ else {
         echo "<p align='center'><INPUT type=\"submit\" value=\"OPEN\" name='open'>&nbsp;<INPUT type=\"reset\" value='Clear'></p>";
         echo "</FORM>";
     } else
-        echo "<div id='please' align='center'>Only tutor can select class</div>";
+        echo "<div id='please' align='center'>Only tutor can open class</div>";
 }
 $conn -> close();
 ?>

@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2222f1f4-527e-448c-a89b-31e5cf75604b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/Untitled.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/Untitled.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/eval.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/eval.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/logOut.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/logOut.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/match.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/match.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/addwish.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/addwish.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matcher/moreInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/moreInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/select.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/select.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/tutorInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/tutorInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/wishlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/wishlist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/mywish.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/mywish.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/registerLecture.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/registerLecture.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,15 +40,15 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Bitnami\wampstack-7.3.9-0\apache2\htdocs\Tutoring_Matching\matcher" />
       <recent name="$PROJECT_DIR$/matcher" />
       <recent name="$PROJECT_DIR$/hw4" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw2" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -116,7 +112,7 @@
       <workItem from="1575293602127" duration="1989000" />
       <workItem from="1575351741516" duration="3417000" />
       <workItem from="1575371019197" duration="27456000" />
-      <workItem from="1575424706888" duration="2329000" />
+      <workItem from="1575424706888" duration="6107000" />
     </task>
     <servers />
   </component>

@@ -89,23 +89,23 @@
             echo "<TR><TD align='right'>Department &nbsp;</TD>
                 <TD><select name=\"department\">
                     <option value=". $_POST["department"]. ">". $_POST["department"]. "</option>
-                    <option value=\"PH\">Physics</option>
-                    <option value=\"MAS\">Mathematics</option>
-                    <option value=\"CH\">Chemistry</option>
-                    <option value=\"BS\">Biology</option>
-                    <option value=\"CS\">Computer Science</option>
-                    <option value=\"EE\">Electronic Engineering</option>
-                    <option value=\"CE\">Civil & Environment Engineering</option>
-                    <option value=\"BiS\">Bio & Brain Engineering</option>
-                    <option value=\"ID\">Industrial Design</option>
-                    <option value=\"IE\">Industrial & System Engineering</option>
-                    <option value=\"CBE\">Chemical & Biomolecular Engineering</option>
-                    <option value=\"NQE\">Nuclear & Quantum Engineering</option>
-                    <option value=\"MS\">Material Science And Engineering</option>
-                    <option value=\"ME\">Mechanical Engineering</option>
-                    <option value=\"AE\">Aerospace Engineering</option>
-                    <option value=\"MSB\">Business</option>
-                    <option value=\"Fresh\">Freshman</option>
+                    <option value=\"Physics\">Physics</option>
+                    <option value=\"Mathematics\">Mathematics</option>
+                    <option value=\"Chemistry\">Chemistry</option>
+                    <option value=\"Biology\">Biology</option>
+                    <option value=\"Computer Science\">Computer Science</option>
+                    <option value=\"Electronic Engineering\">Electronic Engineering</option>
+                    <option value=\"Civil & Environment Engineering\">Civil & Environment Engineering</option>
+                    <option value=\"Bio & Brain Engineering\">Bio & Brain Engineering</option>
+                    <option value=\"Industrial Design\">Industrial Design</option>
+                    <option value=\"Industrial & System Engineering\">Industrial & System Engineering</option>
+                    <option value=\"Chemical & Biomolecular Engineering\">Chemical & Biomolecular Engineering</option>
+                    <option value=\"Nuclear & Quantum Engineering\">Nuclear & Quantum Engineering</option>
+                    <option value=\"Material Science And Engineering\">Material Science And Engineering</option>
+                    <option value=\"Mechanical Engineering\">Mechanical Engineering</option>
+                    <option value=\"Aerospace Engineering\">Aerospace Engineering</option>
+                    <option value=\"Business\">Business</option>
+                    <option value=\"Freshman\">Freshman</option>
                  </select></TD></TR>";
             echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='email' name='email' value=". $_POST["email"]. "></TD>";
             echo "</TABLE>";
@@ -136,23 +136,23 @@
             echo "<TR><TD align='right'>Student Number &nbsp;</TD><TD>". $now["stu_num"]. "</TD></TR>";
             echo "<TR><TD align='right'>Department &nbsp;</TD><TD><select name=\"department\">
                     <option value=". $now["department"]. ">". $now["department"]. "</option>
-                    <option value=\"PH\">Physics</option>
-                    <option value=\"MAS\">Mathematics</option>
-                    <option value=\"CH\">Chemistry</option>
-                    <option value=\"BS\">Biology</option>
-                    <option value=\"CS\">Computer Science</option>
-                    <option value=\"EE\">Electronic Engineering</option>
-                    <option value=\"CE\">Civil & Environment Engineering</option>
-                    <option value=\"BiS\">Bio & Brain Engineering</option>
-                    <option value=\"ID\">Industrial Design</option>
-                    <option value=\"IE\">Industrial & System Engineering</option>
-                    <option value=\"CBE\">Chemical & Biomolecular Engineering</option>
-                    <option value=\"NQE\">Nuclear & Quantum Engineering</option>
-                    <option value=\"MS\">Material Science And Engineering</option>
-                    <option value=\"ME\">Mechanical Engineering</option>
-                    <option value=\"AE\">Aerospace Engineering</option>
-                    <option value=\"MSB\">Business</option>
-                    <option value=\"Fresh\">Freshman</option>
+                    <option value=\"Physics\">Physics</option>
+                    <option value=\"Mathematics\">Mathematics</option>
+                    <option value=\"Chemistry\">Chemistry</option>
+                    <option value=\"Biology\">Biology</option>
+                    <option value=\"Computer Science\">Computer Science</option>
+                    <option value=\"Electronic Engineering\">Electronic Engineering</option>
+                    <option value=\"Civil & Environment Engineering\">Civil & Environment Engineering</option>
+                    <option value=\"Bio & Brain Engineering\">Bio & Brain Engineering</option>
+                    <option value=\"Industrial Design\">Industrial Design</option>
+                    <option value=\"Industrial & System Engineering\">Industrial & System Engineering</option>
+                    <option value=\"Chemical & Biomolecular Engineering\">Chemical & Biomolecular Engineering</option>
+                    <option value=\"Nuclear & Quantum Engineering\">Nuclear & Quantum Engineering</option>
+                    <option value=\"Material Science And Engineering\">Material Science And Engineering</option>
+                    <option value=\"Mechanical Engineering\">Mechanical Engineering</option>
+                    <option value=\"Aerospace Engineering\">Aerospace Engineering</option>
+                    <option value=\"Business\">Business</option>
+                    <option value=\"Freshman\">Freshman</option>
                 </select></TD></TR>";
             echo "<TR><TD align='right'>Email &nbsp;</TD><TD><input type='text' name='email' value=". $now["email"]. "></TD></TR>";
             $tutorCheck = "select * from match.tutor where stuNum=". $_POST["StudNum"];

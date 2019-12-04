@@ -57,6 +57,8 @@ if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
 }
 
+$empty = 0;
+
 echo "<FORM METHOD=\"POST\" ACTION=\"delete.php\">";
 
 function checktutortutee($x, $y) {
@@ -86,7 +88,8 @@ if (checktutortutee($studentnumber, $conn) == 0) {
         echo "</TABLE>";
     }
     else {
-        echo "<div id='please' align='center'>No opened class</div>";
+        echo "<div id='please' align='center'>Empty Wishlist</div>";
+        $empty = 1;
     }
 }
 else if (checktutortutee($studentnumber, $conn) == 1) {
@@ -105,6 +108,7 @@ else if (checktutortutee($studentnumber, $conn) == 1) {
         echo "</TABLE>";
     } else {
         echo "<div id='please' align='center'>Empty Wishlist</div>";
+        $empty = 1;
     }
 }
 else {
@@ -112,10 +116,10 @@ else {
     echo "<p align='center'><button type='button' onclick=\"location.href ='main.html' \" class='button'>Back</button></p>";
 }
 
-if (checktutortutee($studentnumber, $conn) == 0) {
+if (checktutortutee($studentnumber, $conn) == 0 && $empty == 0) {
     echo "<p align='center'><INPUT type=\"submit\" value=\"Delete\" ></p>&nbsp;";
 }
-else if (checktutortutee($studentnumber, $conn) == 1) {
+else if (checktutortutee($studentnumber, $conn) == 1 && $empty == 0) {
     echo "<p align='center'><INPUT type=\"submit\" value=\"Delete\" >&nbsp;";
     echo "<button type='button' onclick=\"location.href ='mywish.php' \"> Add Wishlist </button></p>";
 }

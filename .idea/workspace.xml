@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2222f1f4-527e-448c-a89b-31e5cf75604b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/moreInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/moreInfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matcher/registerLecture.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/registerLecture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matcher/tutorInfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/matcher/tutorInfo.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +111,7 @@
       <workItem from="1575371019197" duration="27456000" />
       <workItem from="1575424706888" duration="6911000" />
       <workItem from="1575435193537" duration="80000" />
-      <workItem from="1575442675543" duration="2895000" />
+      <workItem from="1575442675543" duration="3552000" />
     </task>
     <servers />
   </component>

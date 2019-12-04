@@ -4,7 +4,7 @@
         table{
             alignment: center;
             font-size: 20px;
-            margin-top: 3em;
+            margin-top: 2em;
             border-collapse: separate;
             border: 2px solid black;
             border-radius: 20px;
@@ -17,14 +17,14 @@
         }
         #please{
             text-align: center;
-            margin-top: 3em;
-            font-size: 3em;
+            margin-top: 1em;
+            font-size: 2em;
             font-weight: bold;
         }
-        #select{
+        #tutee{
             text-align: center;
             margin-top: 2em;
-            font-size: 1em;
+            font-size: 2em;
             font-weight: bold;
         }
     </style>
@@ -44,23 +44,26 @@ if ($conn-> connect_error) {
 }
 
 if (isset($_GET["courseId"])) {
-    echo "<div id='select' align='center'>tutor: ". $_GET["tutor"]. "</div>";
+    echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
+    echo "<TR><TD>Tutor</TD><TD>". $_GET["tutor"]. "</TD></TR>";
     $course = $conn->query("select * from kaistcourses where idkaistCourses = ". $_GET["courseId"]. ";");
     if ($course->num_rows > 0){
         $courseNow = $course ->fetch_assoc();
-        echo "<div id='select' align='center'>course: ". $courseNow["course"]. " by ". $courseNow["prof"]. "</div>";
+        echo "<TR><TD>Course</TD><TD>". $courseNow["course"]. " by ". $courseNow["prof"]. "</TD></TR>";
     }
     $query = "select * from match.tutorgrade where stunum = ". $_GET["tutor"]. " and courseId = ". $_GET["courseId"]. ";";
     $grade = $conn->query($query);
     if ($grade->num_rows > 0) {
         $now = $grade -> fetch_assoc();
-        echo "<div id='select' align='center'>grade: ". $now["grade"]."</div>";
+        echo "<TR><TD>Grade</TD><TD>". $now["grade"]."</TD></TR>";
     }
     else
-        echo "<div id='select' align='center'>grade: null</div>";
+        echo "<TR><TD>Grade</TD><TD>Null</TD></TR>";
+
+    echo "</TABLE>";
 
     $q = "select * from match.tuteegrade where tutorNum=". $_GET["tutor"]. ";";
-    echo "<br><div id='please' align='center'>tutee's evalation</div>";
+    echo "<br><div id='tutee' align='center'>Tutee's Evalation</div>";
     echo "<TABLE border=\"0\" width=\"400\" CELLPADDING = \"5\" CELLSPACING = \"1\" align=\"center\">";
     echo "<TR></TD><TD>Grade</TD><TD>Satisfaction</TD><TD>Comment</TD><TD>Semester</TD></TR>";
     $tuteeGrade = $conn->query($q);
@@ -74,7 +77,7 @@ if (isset($_GET["courseId"])) {
             $classId = $matchNow["classId"];            //tuteegrade에 연결된, 수업의 classid
             $qu = "select * from match.open_class where idopen_class=". $classId. ";";
             $opens = $conn->query($qu);
-            //echo $que. "<br>". $qu;
+
             if($opens->num_rows > 0){
                 $openNow = $opens->fetch_assoc();
                 if ($openNow["courseId"] == $_GET["courseId"]){
@@ -88,7 +91,6 @@ if (isset($_GET["courseId"])) {
 
     echo "</TABLE>";
     if ($evals == 0) echo "<div id='please' align='center'>Sorry, no evaluation exists</div>";
-    //echo "<div id='please' align='center'>getting all tutee evaluation: bring course Info or bring evaluation of selected course</div>";
 }
 
 ?>

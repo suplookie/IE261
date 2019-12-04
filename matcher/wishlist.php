@@ -43,14 +43,14 @@
 <?php
 
 //$servername = "110.76.66.224";
-$servername = "143.248.219.83";
+session_start();
+$servername = $_SESSION["ip"];
 $username = "test";
 $password = "1234";
 $dbname = "match";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-session_start();
 $studentnumber = $_SESSION['studNum'];
 
 if ($conn-> connect_error) {

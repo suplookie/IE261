@@ -1,5 +1,6 @@
 <?php
-$servername = "143.248.219.83";
+session_start();
+$servername = $_SESSION["ip"];
 $username = "test";
 $password = "1234";
 $dbname = "match";

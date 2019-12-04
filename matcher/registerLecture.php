@@ -49,13 +49,13 @@
 //로그인했을때 첫화면이기도 하기때문에 signin시 입력한 정보(학번 이름 이메일)이용해 정보 가져오기
 //signup시에도 연결되므로 그때 정보를 데이터베이스에 넣고 내정보 보여주기
 //$servername = "110.76.66.224";
-$servername = "143.248.219.83";
+session_start();
+$servername = $_SESSION["ip"];
 $username = "test";
 $password = "1234";
 $dbname = "match";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-session_start();
 
 if ($conn-> connect_error) {
     die("Connection failed: " + $conn -> connect_error);
